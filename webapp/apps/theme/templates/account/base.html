@@ -1,0 +1,25 @@
+{% extends "subnav_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+
+{% block body_class %}account{% endblock %}
+
+{% block subnav %}
+    <h1>{% trans "Account" %}</h1>
+    <ul>
+        <li><a href="{% url acct_email %}">{% trans "Email Addresses" %}</a></li>
+        {% if user.password %}
+        <li><a href="{% url acct_passwd %}">{% trans "Change Password" %}</a></li>
+        {% else %}
+        <li><a href="{% url acct_passwd_set %}">{% trans "Set Password" %}</a></li>
+        {% endif %}
+        {% if user.password and request.openids %}
+        <li><a href="{% url acct_passwd_delete %}">{% trans "Delete Password" %}</a></li>
+        {% endif %}
+        {% ifsetting USE_I18N %}
+            <li><a href="{% url acct_language_change %}">{% trans "Language" %}</a></li>
+        {% endifsetting %}
+        <li><a href="{% url acct_timezone_change %}">{% trans "Timezone" %}</a></li>
+    </ul>
+{% endblock %}

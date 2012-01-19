@@ -1,0 +1,3 @@
+django-email-confirmation
+django-timezones
+pytz
