@@ -21,5 +21,8 @@
             <li><a href="{% url acct_language_change %}">{% trans "Language" %}</a></li>
         {% endifsetting %}
         <li><a href="{% url acct_timezone_change %}">{% trans "Timezone" %}</a></li>
+        {% ifsetting ACCOUNT_USE_SOCIAL %}
+            <li><a href="{% url acct_social_relationship %}">{% trans "Social Network" %}</a></li>
+        {% endifsetting %}
     </ul>
 {% endblock %}

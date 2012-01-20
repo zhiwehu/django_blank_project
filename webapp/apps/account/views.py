@@ -419,3 +419,4 @@ def language_change(request, **kwargs):
         })
 
     return render_to_response(template_name, RequestContext(request, ctx))
+

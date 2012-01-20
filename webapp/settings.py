@@ -137,15 +137,19 @@ INSTALLED_APPS = (
 
     'timezones',
     'emailconfirmation',
+    'social_auth',
 
     # theme
     'theme',
     'account',
     'signup_codes',
+    'sina_oauth2',
+    'about',
     )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'social_auth.context_processors.social_auth_by_type_backends',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
@@ -161,6 +165,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ACCOUNT_OPEN_SIGNUP = True
 #ACCOUNT_USE_OPENID = False
+ACCOUNT_USE_SOCIAL=True
 ACCOUNT_REQUIRED_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = True
 ACCOUNT_EMAIL_AUTHENTICATION = True
@@ -206,5 +211,10 @@ FIXTURE_DIRS = (
 
 try:
     from local_settings import *
+except ImportError:
+    pass
+
+try:
+    from social_auth_settings import *
 except ImportError:
     pass

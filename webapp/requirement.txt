@@ -1,3 +1,4 @@
 django-email-confirmation
 django-timezones
 pytz
+django-social-auth

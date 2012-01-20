@@ -8,10 +8,10 @@
 {% block body_class %}home{% endblock %}
 
 {% block banner %}
-    <h1>{% trans "Welcome to Pinax" %}</h1>
+    <h1>{% trans "Welcome" %}</h1>
     <p>
         {% blocktrans %}
-        <b>Pinax</b> is a <a href="http://djangoproject.com/">Django</a>
+        T is a <a href="http://djangoproject.com/">Django</a>
         project intended to provide a starting point for websites. By
         integrating numerous reusable Django apps to take care of the
         things that many sites have in common, it lets you focus on what
@@ -24,8 +24,9 @@
         {% blocktrans %}
         This project takes the zero_project and adds basic account management
         functionality such as sign up, log in, password change/reset and email
-        confirmation. It is a foundation suitable for most sites that have user
-        accounts.
+        confirmation.
+        It provide social network connect such as Google, Facebook and Sina(A twitter similar in China).
+        It is a foundation suitable for most sites that have user accounts.
         {% endblocktrans %}
     </p>
     
