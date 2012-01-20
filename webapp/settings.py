@@ -109,6 +109,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -208,6 +209,12 @@ LOGGING = {
 FIXTURE_DIRS = (
     os.path.join(PROJECT_ROOT, 'fixtures'),
     )
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'your mail here'
+EMAIL_HOST_PASSWORD = 'xxxxxx'
 
 try:
     from local_settings import *

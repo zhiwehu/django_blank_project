@@ -26,6 +26,8 @@ urlpatterns = patterns('',
     url(r'^social/', include('social_auth.urls')),
 
     url(r'^about/', include('about.urls')),
+
+    url(r'^setlang', 'django.views.i18n.set_language', name='set_language'),
 )
 
 if settings.DEBUG:

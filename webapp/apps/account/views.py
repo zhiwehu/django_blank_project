@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import logout as django_logout
+from django.views.i18n import set_language
 
 from emailconfirmation.models import EmailAddress, EmailConfirmation
 
@@ -409,6 +410,9 @@ def language_change(request, **kwargs):
                 ugettext(u"Language successfully updated.")
             )
             next = request.META.get("HTTP_REFERER", None)
+
+            set_language(request)
+
             return HttpResponseRedirect(next)
     else:
         form = form_class(request.user)
