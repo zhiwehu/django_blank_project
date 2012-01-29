@@ -12,7 +12,8 @@
 from django.core.urlresolvers import reverse
 
 AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
+#    "django.contrib.auth.backends.ModelBackend",
+    "account.auth_backends.AuthenticationBackend",
 #    "social_auth.backends.twitter.TwitterBackend",
     "social_auth.backends.facebook.FacebookBackend",
 #    "social_auth.backends.google.GoogleOAuthBackend",
