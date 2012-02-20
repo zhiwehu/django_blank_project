@@ -9,12 +9,12 @@
     <p>Please fill out the following form so we know a little about you.</p>
     
     <form method="POST" action="">
-        {% csrf_token %}
         <fieldset>
+            {% csrf_token %}
             {{ form|as_bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </fieldset>
-        <div class="actions">
-            <button type="submit" class="btn primary">Submit</button>
-        </div>
     </form>
 {% endblock %}

@@ -1,32 +1,30 @@
 {% if form.non_field_errors %}
-    <div class="alert-message block-message error">
-        <p>
-        	<strong>{{ form_error_title }}</strong>
-	        <ul>
-	        	{{ form.non_field_errors|unordered_list }}
-	        </ul>
-	    </p>
+    <div class="alert alert-error">
+        {% if form_error_title %}
+            <strong>{{ form_error_title }}</strong>
+        {% endif %}
+        {% for error in form.non_field_errors %}
+            {{ error }}<br />
+        {% endfor %}
     </div>
 {% endif %}
 {% for field in form %}
     {% if field.is_hidden %}
         {{ field }}
     {% else %}
-        <div class="clearfix{% if field.errors %} error{% endif %}">
-            {% if field.label %}
-                <label for="{{ field.auto_id }}" {% if field.field.required %}class="requiredField"{% endif %}>
-                    {{ field.label|safe }}
-                </label>
-                <div class="input">
-                    {{ field }}
-                    {% for error in field.errors %}
-                        <span class="help-block-inline">{{ error }}</span>
-                    {% endfor %}
-                    {% if field.help_text %}
-                        <span class="help-block">{{ field.help_text|safe }}</span>
-                    {% endif %}
-                </div>
-            {% endif %}
+        <div class="control-group {% if field.errors %}error{% endif %}">
+            <label class="control-label {% if field.field.required %}requiredField{% endif %}" for="{{ field.auto_id }}">
+                {{ field.label|safe }}
+            </label>
+            <div class="controls">
+                {{ field }}
+                {% for error in field.errors %}
+                    <span class="help-inline">{{ error }}</span>
+                {% endfor %}
+                {% if field.help_text %}
+                    <p class="help-block">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 {% endfor %}

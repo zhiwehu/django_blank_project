@@ -9,7 +9,7 @@
     <h2>{% trans "Email Addresses" %}</h2>
     
     {% if user.emailaddress_set.all %}
-        <table class="zebra-striped">
+        <table class="table table-striped">
             {% for emailaddress in user.emailaddress_set.all %}
                 <tr>
                     <td>{% if emailaddress.primary %}<b>{{ emailaddress.email }}</b>{% else %}{{ emailaddress.email }}{% endif %}</td>
@@ -25,7 +25,7 @@
                                     <input type="hidden" name="action" value="primary"/>
                                 </form>
                                 -
-                                <a href="#" onclick="$('#primary_{{ forloop.counter }}').submit();">{% trans "make primary" %}</a>
+                                <a href="#" onclick="$('#primary_{{ forloop.counter }}').submit();">{% trans "Make primary" %}</a>
                             {% endif %}
                         </td>
                     {% else %}
@@ -37,7 +37,7 @@
                                 <input type="hidden" name="action" value="send"/>
                             </form>
                             -
-                            <a href="#" onclick="$('#send_{{ forloop.counter }}').submit();">{% trans "re-send verification email" %}</a>
+                            <a href="#" onclick="$('#send_{{ forloop.counter }}').submit();">{% trans "Re-send verification email" %}</a>
                         </td>
                     {% endif %}
                     <td>
@@ -48,29 +48,28 @@
                                 <input type="hidden" name="email" value="{{ emailaddress.email }}"/>
                                 <input type="hidden" name="action" value="remove"/>
                             </form>
-                            <a class="remove" href="#" onclick="$('#remove_{{ forloop.counter }}').submit()">{% trans "remove" %}</a>
+                            <a class="remove" href="#" onclick="$('#remove_{{ forloop.counter }}').submit()">{% trans "Remove" %}</a>
                         {% endif %}
                     </td>
                 </tr>
             {% endfor %}
         </table>
     {% else %} {# no user.emailaddress_set.all #}
-        <div class="alert-message warning">
+        <div class="alert warning">
             <p>{% trans "You should really add an email address so you can receive notifications, reset your password if you forget it, etc." %}</p>
         </div>
     {% endif %}
     
-    <h3>{% trans "Add Email Address" %}</h3>
-    
     <form method="post" action="" autocapitalize="off">
-        {% csrf_token %}
         <fieldset>
+            <legend>{% trans "Add Email Address" %}</legend>
+            {% csrf_token %}
             {{ add_email_form|as_bootstrap }}
+            <input type="hidden" name="action" value="add"/>
+            <div class="form-actions">
+                 <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
+            </div>
         </fieldset>
-        <input type="hidden" name="action" value="add"/>
-         <div class="actions">
-             <button type="submit" class="btn primary">{% trans "add" %}</button>
-        </div>
     </form>
     
 {% endblock %}
