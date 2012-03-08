@@ -3,8 +3,8 @@
         "pk": 1, 
         "model": "sites.site", 
         "fields": {
-            "domain": "mymontreal.biz",
-            "name": "mymontreal.biz"
+            "domain": "django_blank_project.com",
+            "name": "django_blank_project.com"
         }
     }
 ]
