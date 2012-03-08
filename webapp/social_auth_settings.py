@@ -42,11 +42,6 @@ SOCIAL_AUTH_IMPORT_BACKENDS = (
 #
 #Take into account that backends must be defined in AUTHENTICATION_BACKENDS or Django won"t pick them when trying to authenticate the user.
 #
-#Define desired backends for your site:
-#
-SOCIAL_AUTH_ENABLED_BACKENDS = ( "google", "facebook")
-#"sinaweibo",
-#
 #All backends are enabled by default.
 #
 #Setup needed OAuth keys (see OAuth section for details):
