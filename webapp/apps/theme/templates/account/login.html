@@ -44,18 +44,9 @@
 
             {% ifsetting ACCOUNT_USE_SOCIAL %}
                 <h2>{% trans "Or sign in with your Social network" %}:</h2>
-                {% for item in social_auth.backends.openid %}
+                {% for item in social_auth.backends %}
                     <a href="{% url socialauth_begin backend=item %}"><img src="{{ STATIC_URL }}img/{{ item }}.png"></a>
                 {% endfor %}
-
-                {% for item in social_auth.backends.oauth %}
-                    <a href="{% url socialauth_begin backend=item %}"><img src="{{ STATIC_URL }}img/{{ item }}.png"></a>
-                {% endfor %}
-
-                {% for item in social_auth.backends.oauth2 %}
-                    <a href="{% url socialauth_begin backend=item %}"><img src="{{ STATIC_URL }}img/{{ item }}.png"></a>
-                {% endfor %}
-
             {% endifsetting %}
             
             {% if not user.is_authenticated %}

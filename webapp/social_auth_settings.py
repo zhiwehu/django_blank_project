@@ -29,7 +29,7 @@ AUTHENTICATION_BACKENDS = (
 #    "social_auth.backends.contrib.flickr.FlickrBackend",
 #    "social_auth.backends.OpenIDBackend",
 #    "django.contrib.auth.backends.ModelBackend",
-    "sina_oauth2.backends.sina.SinaWeiboBackend",
+#    "sina_oauth2.backends.sina.SinaWeiboBackend",
 )
 #
 #The application will try to import custom backends from the sources defined in:
@@ -44,7 +44,8 @@ SOCIAL_AUTH_IMPORT_BACKENDS = (
 #
 #Define desired backends for your site:
 #
-SOCIAL_AUTH_ENABLED_BACKENDS = ("google", "sinaweibo", "facebook")
+SOCIAL_AUTH_ENABLED_BACKENDS = ( "google", "facebook")
+#"sinaweibo",
 #
 #All backends are enabled by default.
 #
@@ -54,8 +55,8 @@ SOCIAL_AUTH_ENABLED_BACKENDS = ("google", "sinaweibo", "facebook")
 #TWITTER_CONSUMER_SECRET      = ""
 FACEBOOK_APP_ID              = '203404126401249'
 FACEBOOK_API_SECRET          = 'f101067288e758e39e6854376623217a'
-SINAWEIBO_APP_ID              = '3926699931'
-SINAWEIBO_API_SECRET          = '7872e7b8dcb0a25c833b1a8adc95c43f'
+#SINAWEIBO_APP_ID              = '3926699931'
+#SINAWEIBO_API_SECRET          = '7872e7b8dcb0a25c833b1a8adc95c43f'
 #LINKEDIN_CONSUMER_KEY        = ""
 #LINKEDIN_CONSUMER_SECRET     = ""
 #ORKUT_CONSUMER_KEY           = ""

@@ -150,7 +150,7 @@ INSTALLED_APPS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
-    'social_auth.context_processors.social_auth_by_type_backends',
+    'social_auth.context_processors.social_auth_backends',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
