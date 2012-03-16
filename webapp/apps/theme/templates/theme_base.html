@@ -27,7 +27,7 @@
     <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
 
         {% block topbar_base %}
-            <div class="navbar navbar-fixed-top">
+            <div class="navbar {% block navbar_class %}navbar-fixed-top{% endblock %}">
                 <div class="navbar-inner">
                     <div class="container">
                         {% block topbar %}
@@ -55,7 +55,8 @@
         {% endblock %}
 
         {% block body_base %}
-            <div class="container">
+            <div class="container">               	
+                {% block sub-nav %}{% endblock %}
                 {% include "_messages.html" %}
                 {% block body %}
                 {% endblock %}
@@ -92,7 +93,25 @@
             <script src="{% get_static_prefix %}bootstrap/js/bootstrap-typeahead.js"></script>
             <script src="{% get_static_prefix %}pinax/js/theme.js"></script>
             <script src="{% get_static_prefix %}pinax/js/pinax.modal.js"></script>
-            {% block extra_script %}{% endblock %}
+            {% block extra_script %}
+				<script src="{% get_static_prefix %}js/jquery.dataTables.js"></script>
+			    <script src="{% get_static_prefix %}js/DT_bootstrap.js"></script>
+			    <script charset="utf-8" type="text/javascript">
+			        $(document).ready(function () {
+			            /* Show pupover user */
+			            $(".popover-user").popover();
+
+			            /* Table initialisation */
+			            $('.datatable').dataTable( {
+			                "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+			                "sPaginationType": "bootstrap",
+			                "oLanguage": {
+			                    "sLengthMenu": "_MENU_ records per page"
+			                }
+			            } );
+			        });
+			    </script>
+			{% endblock %}
         {% endblock %}
     </body>
 </html>

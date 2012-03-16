@@ -10,6 +10,7 @@ else:
 
 urlpatterns = patterns('',
     url(r'^email/$', 'account.views.email', name='acct_email'),
+    url(r'^re_send_email/$', 'account.views.re_send_email', name='re_send_email'),
     url(r'^signup/$', signup_view, name='acct_signup'),
     url(r'^login/$', 'account.views.login', name='acct_login'),
     url(r'^password_change/$', 'account.views.password_change', name='acct_passwd'),

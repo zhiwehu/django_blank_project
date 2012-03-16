@@ -1,5 +1,9 @@
 {% extends "theme_base.html" %}
+{% load static %}
 {% load i18n %}
+{% block extra_style %}
+    <link href="{% get_static_prefix %}css/style.css" rel="stylesheet">
+{% endblock %}
 
 {% block extra_head_base %}
     {% block extra_head %}{% endblock %}

@@ -29,6 +29,8 @@ EMAIL_VERIFICATION = getattr(settings, "ACCOUNT_EMAIL_VERIFICATION", False)
 EMAIL_AUTHENTICATION = getattr(settings, "ACCOUNT_EMAIL_AUTHENTICATION", False)
 UNIQUE_EMAIL = getattr(settings, "ACCOUNT_UNIQUE_EMAIL", False)
 
+PASSWORD_MIN_LENGTH=6
+PASSWORD_MAX_LENGTH=20
 
 class GroupForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -155,6 +157,12 @@ class SignupForm(GroupForm):
 
     def clean(self):
         if "password1" in self.cleaned_data and "password2" in self.cleaned_data:
+            if len(self.cleaned_data["password1"]) < PASSWORD_MIN_LENGTH or len(self.cleaned_data["password1"]) > PASSWORD_MAX_LENGTH:
+                raise forms.ValidationError(_("Password should be in %(min)d to %(max)d" % {"min": PASSWORD_MIN_LENGTH, "max":PASSWORD_MAX_LENGTH}))
+
+            if len(self.cleaned_data["password2"]) < PASSWORD_MIN_LENGTH or len(self.cleaned_data["password2"]) > PASSWORD_MAX_LENGTH:
+                raise forms.ValidationError(_("Password should be in %(min)d to %(max)d" % {"min": PASSWORD_MIN_LENGTH, "max":PASSWORD_MAX_LENGTH}))
+
             if self.cleaned_data["password1"] != self.cleaned_data["password2"]:
                 raise forms.ValidationError(_("You must type the same password each time."))
         return self.cleaned_data

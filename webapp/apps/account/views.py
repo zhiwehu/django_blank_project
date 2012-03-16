@@ -219,6 +219,23 @@ def email(request, **kwargs):
 
     return render_to_response(template_name, RequestContext(request, ctx))
 
+def re_send_email(request):
+    if request.method == "POST" and request.POST["action"] == "send":
+        email = request.POST["email"]
+        try:
+            email_address = EmailAddress.objects.get(
+                #user=request.user,
+                email=email,
+            )
+            messages.add_message(request, messages.INFO,
+                ugettext("Confirmation email sent to %(email)s") % {
+                    "email": email,
+                    }
+            )
+            EmailConfirmation.objects.send_confirmation(email_address)
+        except EmailAddress.DoesNotExist:
+            pass
+    return render_to_response("account/verification_sent.html", RequestContext(request, {"email":email}))
 
 @login_required
 def password_change(request, **kwargs):
